@@ -1,0 +1,20 @@
+﻿@model newshub.Models.Nadmin
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "AdminDashboard";
+    var aname = Context.Session.GetString("name");
+}
+
+<link rel="stylesheet" href="/css/Style1.css">
+<div class="container">
+
+    <div class="content">
+        <h3>hi, <span>admin</span></h3>
+        <h1>welcome <span>@aname</span></h1>
+        <p>this is an admin page</p>
+
+        <a asp-action="Index" asp-controller="Admin" class="btn">Dashboard</a>
+        <a asp-action="Logout" asp-controller="Home" class="btn">logout</a>
+    </div>
+
+</div>

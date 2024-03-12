@@ -1,0 +1,348 @@
+﻿@model IEnumerable<cardData1>
+@{
+    ViewData["Title"] = "Home Page";
+    var message = TempData["Message"] as string;
+    
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <script>
+        alert('@message');
+    </script>
+}
+
+
+<div class="sc-fqkvVR flWiDK">
+    <div class="row">
+        @foreach (var i in Model)
+        {
+            @*  var date = news.publishedAt.Split("T"); *@
+
+
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 150px; margin-bottom: 50px;">
+                <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+                    <img class="card-img-top" src="@i.ImgSrc" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+                    <div class="card-body">
+                        <div class="card-title h5">
+                            @i.Title
+                        </div>
+                        <p class="card-text" style="color: rgb(182, 180, 180);">
+                            @i.Description
+                        </p>
+                        <details style="margin-bottom: 15px;">
+                            <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+                                Channel and PublishedAt
+                            </summary>
+                            <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+                                Channel: @i.Channel
+                            </p>
+                            <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+                                Published at: Fri, 23 Feb 2024 14:55:00
+                            </p>
+                        </details>
+                        <a role="button" tabindex="0" href="@i.VedioLink" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+                            Read more →
+                        </a>
+                        <button class="add-to-fav" data-card-id="123">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+
+            @*
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 150px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://media.cnn.com/api/v1/images/stellar/prod/still-20406711-159803-432-still.jpg?c=16x9&amp;q=w_800,c_fill" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body"><div class="card-title h5">Augusta University student found dead at University of Georgia, officials say. Police suspect foul play.
+        </div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        School and state authorities suspect foul play and are investigating after a woma
+        n’s body was found with “visible injuries” on the University of Georgia’s campus Thurs
+        day, university officials said.
+        </p>
+        <details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: CNN
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 14:55:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://www.cnn.com/2024/02/22/us/university-georgia-woman-dead/index.html" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 150px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1688,w_3000,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1708656504/Blank_3000_x_1688_11_cskym6" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">Andy Cohen Responds to ‘RHOBH’ Star Brandi Glanville’s Sexual Harassment Allegations</div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        The Bravo boss apologized, but said that a video allegedly showing him invitin
+        g Brandi Glanville to watch a sexual act over FaceTime was “absolutely meant in jest.”
+        </p><details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: The Daily Beast
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 12:43:44
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://www.thedailybeast.com/andy-cohen-responds-to-rhobh-star-brandi-glanvilles-sexual-harassment-allegations" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 150px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://dims.apnews.com/dims4/default/6f3494e/2147483647/strip/true/crop/3393x1909+0+177/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F65%2F13%2F7f2240bd55102217b12723cb0e6b%2F8a63425a8fc64643ab5bb5b9f2b41922" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">Classified documents: Trump's lawyers claim presidential immunity protects him</div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        Trump faces dozens of felony counts in federal court in Florida accusing him of illegally hoarding classified documents at his Mar-a-Lago estate.
+        </p><details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: The Associated Press
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 10:57:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://apnews.com/article/trump-classified-documents-immunity-maralago-cfbb3a9cc50495da1652fa63315dcb05" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 150px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://nypost.com/wp-content/uploads/sites/2/2024/02/newspress-collage-65t5xipgq-1708664110126.jpg?quality=75&amp;strip=all&amp;1708646120&amp;w=1024" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">Pharmacies nationwide face delays as health-care tech company reports cyberattack</div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        Pharmacies across the country are reporting delays to prescription orders due to a cyberattack against one of the nation's largest healthcare technology companies.
+        </p><details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: New York Post
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: ri, 23 Feb 2024 10:26:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://nypost.com/2024/02/22/lifestyle/pharmacies-nationwide-face-delays-as-health-care-tech-company-reports-cyberattack/" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 10px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://cdn.abcotvs.com/dip/images/14459277_022224-kabc-a7-spacex-launch-vid.jpg?w=1600" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">SpaceX launches Falcon 9 rocket to add more Starlink satellites to network</div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        A SpaceX launch of a Falcon 9 rocket delivering Starlink satellites created a bright fiery sight in the Southern California skies Thursday night.
+        </p><details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: KABC-TV
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 10:09:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://abc7.com/spacex-launch-falcon-9-rocket-starlink-satellite-vandenberg-air-force-base/14459281/" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 10px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/TUN4ZSVXW5C2HANUZNYCGF2MVA.jpeg&amp;w=1440" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">The sun just launched three huge solar flares in 24 hours</div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        The latest outburst is the most intense of the current 11-year solar cycle.
+        </p><details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: The Washington Post
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at:  Fri, 23 Feb 2024 10:06:32
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://www.washingtonpost.com/weather/2024/02/22/solar-flares-cycle-xclass-radio-att/" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 10px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://i.insider.com/65d7f4696080194819f999ec?width=1200&amp;format=jpeg" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">Putin Flexes Power With Navalny Death, Also Highlights Regime's Weakness</div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        The string of suspicious deaths — Alexey Navalny and the Russian pilot who defected with a Mi-8 helicopter — show power and weakness.
+        </p><details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: Business Insider
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 08:38:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://www.businessinsider.com/putin-flexes-power-navalny-death-also-highlights-regime-weakness-2024-2" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 10px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://thehill.com/wp-content/uploads/sites/2/2023/05/CDC.png?w=1280" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body"><div class="card-title h5">‘Norovirus’ slams Northeast US hardest in recent weeks: CDC</div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        A stomach virus known as the “norovirus” is spreading across the Northeast region of the United States, according to data from the Centers for Disease Control and Prevention (CDC). The three-week average positive tests for norovirus in the region reached 13.9 percent in recent weeks and held above a 10 percent positive rate since the…
+        </p> <details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: The Hill
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 08:37:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://thehill.com/policy/healthcare/4484460-norovirus-slams-northeast-us-hardest-in-recent-weeks-cdc/" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 10px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://dims.apnews.com/dims4/default/6a50932/2147483647/strip/true/crop/4900x2756+0+194/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F13%2Fc5%2Fb73cc12ee155d4cae0873fdcfd1e%2F478a45313e264fe6a8101c77477b7aad" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">
+        Odysseus lunar lander makes moon landing, but signal weak.
+        </div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        A private lander from the company Intuitive Machines made the first U.S. touchdown on the moon in more than 50 years.
+        </p>
+        <details style="margin-bottom: 15px;"><summary style="color: rgb(245, 245, 245); font-size: 15px;">Channel and PublishedAt
+
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: The Associated Press
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 08:26:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://apnews.com/article/moon-landing-private-company-intuitive-machines-9c896bfca61582773d381f4045fd35d7" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 10px; margin-bottom: 50px;">
+        <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+        <img class="card-img-top" src="https://dims.apnews.com/dims4/default/9f803f7/2147483647/strip/true/crop/5218x2935+0+271/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F16%2F7d%2F383d45c98b7a259076c3b4425b3d%2F3421ed9c6281451d97d931c8776370a7" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+        <div class="card-body">
+        <div class="card-title h5">
+        More Alabama IVF providers pause treatment after court ruling on frozen embryos
+        </div>
+        <p class="card-text" style="color: rgb(182, 180, 180);">
+        More in vitro fertilization providers in Alabama have paused parts of their treatment after the state Supreme Court ruled that frozen embryos are legally considered children.
+        </p>
+        <details style="margin-bottom: 15px;">
+        <summary style="color: rgb(245, 245, 245); font-size: 15px;">
+        Channel and PublishedAt
+        </summary>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Channel: The Associated Press
+        </p>
+        <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">
+        Published at: Fri, 23 Feb 2024 08:15:00
+        </p>
+        </details>
+        <a role="button" tabindex="0" href="https://apnews.com/article/alabama-frozen-embryos-ruling-ivf-pause-3ea72dd4494cad3f65c57e751e4c5c3b" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">
+        Read more →
+        </a>
+        </div>
+        </div>
+        </div> *@
+
+
+        }
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.add-to-fav').forEach(button => {
+        button.addEventListener('click', function () {
+            const cardID = this.getAttribute('data-card-id');
+            addToFavorites(cardID);
+        });
+    });
+
+    function addToFavorites(cardID) {
+        fetch('/Home/AddToFavorites', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Include CSRF token as needed
+            },
+            body: JSON.stringify({ cardID: cardID })
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Added to favorites");
+                    // Optionally, move the card to the favorites section in the UI here
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+    const cardElement = document.querySelector(`[data-card-id="${cardID}"]`).closest('.card');
+    document.querySelector('#favorites-section').appendChild(cardElement);
+</script>

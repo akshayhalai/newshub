@@ -1,0 +1,126 @@
+@media(max-width:769px){
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .navbar-collapse{
+         background-color: #FFF;
+    }
+    .navbar-light .navbar-toggler{
+        background-color: #FFF;
+    }
+    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link,.navbar-light .navbar-nav .nav-link{
+        color:black;
+    }
+    .navbar-light .navbar-nav .nav-link:hover{
+    color:#f23a2e;
+}
+    .header-contain{
+        min-height: 650px;
+        width: 100%;
+    }
+    .header-contain h1{
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .header-contain p{
+        padding: 0;
+        font-size: 1rem;
+    }
+    .hours-working{
+        top: -55px;
+        padding: 10px 25px;
+        max-width: 100%;
+        
+    }
+    .hours-working h3{
+        font-size: 24px;
+    }
+    .hours-working p{
+        font-size: 17px;
+    }
+    .hours-working .btn{
+        left: -24%;
+        top: 10px;
+        position: relative;
+    }
+    .carousel .owl-carousel.owl-drag .owl-item .text p{
+        font-size: 15px;
+    }
+    .shedule-days .days li{
+    padding: 3px 16px;
+    }
+    .healthy,.classes,.shedule,.trainer,.services,.contact{
+    padding: 100px 0 0px 0;
+    margin: auto;
+    width: 100%;
+    }
+.healthy p,.classes p,.shedule p,.trainer p,.services p,.contact p{
+    color: #ababab;
+    font-size: 12px;
+    }
+.healthy h1,.classes h1,.shedule h1,.trainer h1,.services h1,.contact h1{
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    }
+    .result .container h2,.result2 .container h2,.result3 .container h2{
+    font-weight: bold;
+    font-size: 22px;
+    }
+.result .container p,.result2 .container p,.result3 .container p{
+    font-weight: 400;
+    font-size: 12px
+    }
+    .result .container ,.result2 .container ,.result3 .container {
+        padding-top: 40%;
+    }
+    .trainers div{
+        margin-top: 30px;
+    }
+    footer h5{
+        font-size: 14px;
+    }
+    footer p{
+        font-size: 13px;
+    }
+    .col-xs-2{
+        width: 37%;
+    }
+    .col-xs-9{
+      width: 53%;
+    }
+    .classes-content .class1 h3{
+        font-size: 16px;
+    }
+    .classes-content .class1 p{
+        font-size: 13px;
+    }
+}
+
+@media(min-width:769px)
+{
+    @media(max-width:1080px){
+         .shedule-days .days li{
+        padding: 3px 41px;
+    }
+        .navbar-collapse{
+         background-color: #FFF;
+    }
+    .navbar-light .navbar-toggler{
+        background-color: #FFF;
+    }
+    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link,.navbar-light .navbar-nav .nav-link{
+        color:black;
+    }
+    .navbar-light .navbar-nav .nav-link:hover{
+    color:#f23a2e;
+}
+        .hours-working{
+            max-width: 70%;
+        }
+    }
+   
+}

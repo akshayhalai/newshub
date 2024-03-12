@@ -1,0 +1,50 @@
+﻿.card-hover {
+    display: inline-block;
+    border-radius: 10px;
+    width: 300px;
+    background-color: rgb(41, 47, 51);
+    color: #fff;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.card-hover:hover {
+    transform: scale(1.03); 
+}
+
+.card-hover {
+    transition: transform 400ms ease;
+}
+
+.img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    object-fit: cover;
+    width: 100px;
+    height: 230px;
+}
+footer{
+    height:200px;
+}
+.flWiDK {
+    width: 93%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    display:flex;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}

@@ -1,0 +1,62 @@
+﻿@model Register
+@* <style>
+    label{
+        color:aliceblue;
+    }
+</style>
+<h1>Add</h1>
+<form method="post">
+    <div class=" border p-3 m-4">
+        <div class="row pb-3">
+            <h2 class="text-primary">Register</h2>
+            <hr />
+        </div>
+
+        <div class="row mb-3">
+            <label>Name</label>
+            <input type="text" name="uname" class="form-control" />
+        </div>
+        <div class="row mb-3">
+            <label>Email</label>
+            <input type="text" name="uemail" class="form-control" />
+        </div> <div class="row mb-3">
+            <label>Passsword</label>
+            <input type="password" name="upass" class="form-control" />
+        </div> 
+        <div class="row mb-3">
+            <label>Confirm Passsword</label>
+            <input type="password" name="conpass" class="form-control" />
+        </div> 
+        <div class="row mb-3">
+            <label>Mobile No</label>
+            <input type="text" name="umob" class="form-control" />
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">ADD</button>
+</form>
+ *@
+
+<link rel="stylesheet" href="~/css/Style1.css" />
+
+
+    <div class="form-container" style="padding-top:150px">
+
+        <form action="" method="post">
+            <h3 style="color:aliceblue">register now</h3>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                <label style="color:red">@ViewBag.Notification</label>
+                </div>
+            </div>
+            <input type="text" name="uname" required placeholder="enter your name">
+            <input type="email" name="uemail" required placeholder="enter your email">
+            <input type="password" name="upass" required placeholder="enter your password">
+            <input type="password" name="conpass" required placeholder="confirm your password">
+            <input type="text" name="umob" required placeholder="enter your mobile no">
+
+            <input type="submit" name="submit" value="register now" class="form-btn">
+            <p>already have an account? <a asp-action="Login" asp-controller="Home">login now</a></p>
+        </form>
+
+    </div>
+
