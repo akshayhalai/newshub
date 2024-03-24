@@ -20,7 +20,9 @@ namespace newshub.Data
 
         public DbSet<Nadmin> Admin { get; set; }
 
-      
+        //public DbSet<Favorite> Favoriteuser { get; set; }
+
+
     }
 }
 

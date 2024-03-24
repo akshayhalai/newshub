@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var aname = Context.Session.GetString("name");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-   
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
    
@@ -12,22 +14,33 @@
     <link rel="stylesheet" href="~/css/admin.css" />
     <link rel="stylesheet" href="~/css/all.min.css" />
     <link rel="stylesheet" href="~/css/media.css" />
-   
- 
+
 
 </head>
 <body>
     <header>
         <nav class="navbar navbar-inverse navbar-fixed-top">
-            
-                
-                <div class="collapse navbar-collapse">
-                    <ul>
 
-                    <li><a asp-action="userShow" asp-controller="Admin">Users</a></li>
-                    <li><a asp-action="Logout" asp-controller="Home">Logout</a></li>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a asp-action="userShow" asp-controller="Admin">Users</a>
+                    </li>
+
+                </ul>
+                <div style="align-items:flex-end">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item fa-align-right">
+                            <a style="font-family:'Bell MT'">@aname</a>
+                        </li>
+                        <li class="nav-item fa-align-right">
+                            <a asp-action="Logout" asp-controller="Home">Logout</a>
+                        </li>
                     </ul>
                 </div>
+            </div>
          
         </nav>
     </header>

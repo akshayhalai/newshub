@@ -4,8 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using newshub.Data;
 using newshub.Models;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using newshub.Controllers;
 using System.Security.Claims;
+using Newtonsoft.Json;
 namespace newshub.Controllers
    
 {
@@ -20,13 +23,35 @@ namespace newshub.Controllers
             this.db = db;
             _logger = logger;
         }
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+
+        //}
+
+
+
+        private const string API_KEY = "ec793e9876c8aa92a93d1c509feb8b1f";
+        public async Task<IActionResult> Index(string category = "general")
         {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-           
+            using (var client = new HttpClient())
+            {
+                var url = $"https://gnews.io/api/v4/top-headlines?category={category}&lang=en&country=us&apikey={API_KEY}";
+                var response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                var responseBody = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<ApiResponse>(responseBody);
+                return View(data.Articles);
+                
+            }
         }
-       
+
+
+
+
+
+
         public IActionResult Register()
         {
             return View();  
@@ -44,10 +69,6 @@ namespace newshub.Controllers
             {
                 db.Users.Add(register);
                 db.SaveChanges();
-
-                
-                /*HttpContext.Session.SetString("ID", register.ID.ToString());*/
-                HttpContext.Session.SetString("uname", register.uname.ToString());
                 return RedirectToAction("Login","Home");
             }
 
@@ -85,7 +106,7 @@ namespace newshub.Controllers
 
                     TempData["Message"] = "Welcome," + checkLogin.uname.ToString();
 
-                    return RedirectToAction("Home", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 else
@@ -99,68 +120,54 @@ namespace newshub.Controllers
             
         }
 
-
-       /* public async Task<IActionResult> Search(string query)
-        {
-            var newsArticles = from m in db.cardData
-                               select m;
-
-            if (!String.IsNullOrEmpty(query))
-            {
-                newsArticles = newsArticles.Where(s => s.Title.Contains(query) || s.Content.Contains(query));
-            }
-
-            return View(await newsArticles.ToListAsync());
-        }
-*/
-
+        
         public ActionResult Logout()
         {
             HttpContext.Session.Remove("ID");
             HttpContext.Session.Remove("uname");
             return RedirectToAction("Index", "Home");
         }
-        public IActionResult General()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-        }
-        public IActionResult Home()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-        }
-         public IActionResult Business()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData); 
+        //public IActionResult General()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+        //}
+        //public IActionResult Home()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+        //}
+        // public IActionResult Business()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData); 
             
-        }
-         public IActionResult Sport()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-        }
-         public IActionResult Science()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-        }
-        public IActionResult Health()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-        }
-        public IActionResult Entertainment()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-        }
-        public IActionResult Technology()
-        {
-            IEnumerable<cardData1> cardData = db.cardData;
-            return View(cardData);
-        }
+        //}
+        // public IActionResult Sport()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+        //}
+        // public IActionResult Science()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+        //}
+        //public IActionResult Health()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+        //}
+        //public IActionResult Entertainment()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+        //}
+        //public IActionResult Technology()
+        //{
+        //    IEnumerable<cardData1> cardData = db.cardData;
+        //    return View(cardData);
+        //}
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

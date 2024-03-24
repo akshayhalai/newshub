@@ -1,40 +1,8 @@
 ﻿@model Register
-@* <style>
-    label{
-        color:aliceblue;
-    }
-</style>
-<h1>Add</h1>
-<form method="post">
-    <div class=" border p-3 m-4">
-        <div class="row pb-3">
-            <h2 class="text-primary">Register</h2>
-            <hr />
-        </div>
+@{
+    ViewData["Title"] = "Registeration";
 
-        <div class="row mb-3">
-            <label>Name</label>
-            <input type="text" name="uname" class="form-control" />
-        </div>
-        <div class="row mb-3">
-            <label>Email</label>
-            <input type="text" name="uemail" class="form-control" />
-        </div> <div class="row mb-3">
-            <label>Passsword</label>
-            <input type="password" name="upass" class="form-control" />
-        </div> 
-        <div class="row mb-3">
-            <label>Confirm Passsword</label>
-            <input type="password" name="conpass" class="form-control" />
-        </div> 
-        <div class="row mb-3">
-            <label>Mobile No</label>
-            <input type="text" name="umob" class="form-control" />
-        </div>
-    </div>
-    <button class="btn btn-primary" type="submit">ADD</button>
-</form>
- *@
+}
 
 <link rel="stylesheet" href="~/css/Style1.css" />
 

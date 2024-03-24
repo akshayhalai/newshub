@@ -35,53 +35,47 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                  <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="home">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="General" asp-controller="Home">General</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="general">General</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="Business" asp-controller="Home">Business</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="business">Business</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="Sport" asp-controller="Home">Sports</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="sports">Sports</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="Science" asp-controller="Home">Science</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="science">Science</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="Health" asp-controller="Home">Health</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="health">Health</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="Entertainment" asp-controller="Home">Entertainment</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="entertainment">Entertainment</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="Technology" asp-controller="Home">Technology</a>
-                                </li>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-category="technology">Technology</a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Favorite">Favorite</a>
+                                </li> 
                             </ul>
-                            <form class="d-flex">
+                            <form class="d-flex" method="get" id="searchForm">
+                                <input class="form-control me-2" type="text" id="newsQuery" name="query" placeholder="Enter your search query">
+                                <button class="btn btn-primary" type="button" onclick="searchNews()" style="margin-right:10px">Search</button>
                                 @if (!string.IsNullOrEmpty(Context.Session.GetString("uname")))
                                 {
-                                    <input class="form-control me-2" type="text" id="newsQuery" placeholder="Shodhva Mate">
-                                    <a class="btn btn-outline-primary" id="searchBtn" style="margin-right:70px">Search</a>
-
-
                                     <a class="nav-link" style="color:aliceblue; font-size:large; font-style:oblique"><b>@(Context.Session.GetString("uname"))</b></a>
-                                  
-                                    
-                                        <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
-                                    
+                                    <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
                                 }
                                 else
                                 {
-                                    <input class="form-control me-2" type="text" id="newsQuery" placeholder="Shodhva Mate">
-                                    <a class="btn btn-outline-primary" id="searchBtn" style="margin-right:70px">Search</a>
                                     <a class="btn btn-outline-primary" style="margin-right:10px" asp-action="Register" asp-controller="Home">Register</a>
                                     <a class="btn btn-outline-primary" asp-action="Login" asp-controller="Home">Login</a>
-
                                 }
                             </form>
-                    
                         </div>
                
                     </div>
@@ -109,6 +103,23 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
   
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function searchNews() {
+            var query = document.getElementById("newsQuery").value.trim();
+            if (query !== "") {
+                var encodedQuery = encodeURIComponent(query);
+                var url = `/News/SearchNews?query=${encodedQuery}`;
+                window.location.href = url;
+            } else {
+                alert("Please enter a search query.");
+            }
+        }
+
+        document.getElementById("searchForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

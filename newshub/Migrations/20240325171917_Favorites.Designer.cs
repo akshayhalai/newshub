@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using newshub.Data;
 
@@ -10,9 +11,11 @@ using newshub.Data;
 namespace newshub.Migrations
 {
     [DbContext(typeof(UserdbContext))]
-    partial class UserdbContextModelSnapshot : ModelSnapshot
+    [Migration("20240325171917_Favorites")]
+    partial class Favorites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,15 +32,27 @@ namespace newshub.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ArticleChannel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ArticleDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ArticleImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ArticleTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("ArticleUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Favoriteuser");
+                    b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("newshub.Models.Nadmin", b =>

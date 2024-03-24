@@ -1,4 +1,4 @@
-﻿﻿* {
+﻿* {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -26,23 +26,24 @@
             color: #333;
         }
 
-            .container .content h3 span {
-                background: crimson;
+.container .content h3 span {
+                background-color:#6D31ED;
                 color: #fff;
                 border-radius: 5px;
                 padding: 0 15px;
             }
 
-        .container .content h1 {
+.container .content h1 {
             font-size: 50px;
             color: #333;
         }
 
-            .container .content h1 span {
-                color: crimson;
+
+ .container .content h1 span {
+                color: #6D31ED;
             }
 
-        .container .content p {
+.container .content p {
             font-size: 25px;
             margin-bottom: 20px;
         }
@@ -58,7 +59,7 @@
         }
 
             .container .content .btn:hover {
-                background: crimson;
+                background: #6D31ED;
             }
 
 .form-container {
@@ -134,3 +135,4 @@
             font-size: 20px;
             padding: 10px;
         }
+

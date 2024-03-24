@@ -1,0 +1,30 @@
+﻿@model Register
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Edit User";
+}
+
+<link rel="stylesheet" href="~/css/Style1.css" />
+
+
+<div class="form-container" style="padding-top:150px">
+
+    <form action="" method="post">
+        <h3 style="color:black">Edit User</h3>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label style="color:red">@ViewBag.Notification</label>
+            </div>
+        </div>
+        <input type="hidden" asp-for="userID" />
+        <input  type="text" name="uname" required placeholder="enter your name" asp-for="uname"/>
+        <input type="email" name="uemail" required placeholder="enter your email" asp-for="uemail"/>
+        <input type="text" name="upass" required placeholder="enter your password"asp-for="upass"/>
+        <input type="text" name="conpass" required placeholder="confirm your password"asp-for="conpass"/>
+        <input type="text" name="umob" required placeholder="enter your mobile no" asp-for="umob"/>
+
+        <input type="submit" name="submit" value="Edit" class="form-btn">
+        <p>back to <a asp-action="userShow" asp-controller="Admin">Details</a></p>
+    </form>
+
+</div>

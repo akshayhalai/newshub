@@ -1,0 +1,34 @@
+﻿@model List<Article>
+
+
+@if (Model != null && Model.Any())
+{
+    <div class="sc-fqkvVR flWiDK">
+    <div class="row">
+        @foreach (var article in Model)
+        {
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 100px; margin-bottom: 20px;">
+                <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+                    <img class="card-img-top" src="@article.Image" alt="News image" style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
+                    <div class="card-body">
+                        <div class="card-title h5">@article.Title</div>
+                        <p class="card-text" style="color: rgb(182, 180, 180);">@article.Description</p>
+                        <details style="margin-bottom: 15px;">
+                            <summary style="color: rgb(245, 245, 245); font-size: 15px;">Channel and PublishedAt</summary>
+                            <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">Channel: @article.Source.Name</p
+                        </details>
+                        <a role="button" tabindex="0" href="@article.Url" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">Read more →</a>
+                        <button class="add-to-fav" data-card-id="123">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+}
+else
+{
+    <p>No search results found.</p>
+}
