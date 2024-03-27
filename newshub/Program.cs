@@ -4,6 +4,7 @@ using newshub.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//hii ther
 // Add services to the container.
 builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
