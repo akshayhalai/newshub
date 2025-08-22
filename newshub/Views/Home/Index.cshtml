@@ -1,4 +1,4 @@
-﻿@model List<Article>
+@model List<newshub.Models.Article>
 @{
     ViewData["Title"] = "Home Page";
     var message = TempData["Message"] as string;
@@ -42,7 +42,15 @@
                             <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px; opacity: 1;">Channel: @article.Source.Name</p>
                         </details>
                         <a role="button" tabindex="0" href="@article.Url" target="_blank" class="btn btn-primary" style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187); box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem; color: white; border-color: rgba(50, 55, 98, 0.718);">Read more →</a>
-                        <button class="add-to-fav" data-article-title="@Html.Raw(article.Title)">Add to Favorites</button>
+                        <button class="add-to-fav" 
+                        data-article-title="@Html.Raw(article.Title)"
+                        data-article-image="@Html.Raw(article.Image)"
+                        data-description="@Html.Raw(article.Description)"
+                        data-url="@Html.Raw(article.Url)"
+                        data-channel="@Html.Raw(article.Source.Name)"
+                               
+                        >Add to Favorites</button>
+
                     </div>
                 </div>
             </div>
@@ -50,29 +58,44 @@
     </div>
 </div>
 
-@section Scripts {
+ @section Scripts {
     <script>
         $(document).ready(function () {
             $('.add-to-fav').click(function () {
                 var articleTitle = $(this).data('article-title');
-                addToFavorites(articleTitle);
+                var articleImage = $(this).data('article-image');
+                var articleDescription = $(this).data('article-description');
+                var articleUrl = $(this).data('article-url');
+                var articleChannel = $(this).data('article-channel');
+
+
+                addToFavorites(articleTitle,articleImage,articleDescription,articleUrl,articleChannel);
             });
         });
 
-        function addToFavorites(articleTitle) {
-            $.post("/Favorite/AddToFavorites", { articleTitle: articleTitle })
+        function addToFavorites(articleTitle,articleImage,articleDescription,articleUrl,articleChannel) {
+            $.post("/Favorite/AddToFavorites", { 
+                
+                articleTitle: articleTitle,
+                articleImage : articleImage,
+                articleDescription : articleDescription,
+                articleUrl : articleUrl,
+                articleChannel : articleChannel
+            })
+
                 .done(function (data) {
-                    if (data.success) {
-                        alert("Add article to favorites.");
-                    } else {
-                        alert("You already add article into favorites.");
-                    }
-                })
-                .fail(function () {
-                    alert("Error occurred while adding article to favorites.");
-                });
+            if (data.success) {
+                alert("searchNews Added Successfully!");
+            } else {
+                alert(data.message); 
+                window.location.href = "/Home/Login";
+            }
+        })
+    .fail(function () {
+        alert("Error occurred while adding article to favorites.");
+    });
         }
     </script>
-}
+} 
  
 
