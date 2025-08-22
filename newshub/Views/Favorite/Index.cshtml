@@ -1,17 +1,39 @@
-﻿@model List<string>
+@model List<string>
 
-<h1>Favorite Articles</h1>
+<h1>My Favorite Articles</h1>
 
 @if (Model.Count > 0)
 {
     <div class="sc-fqkvVR flWiDK">
         <div class="row">
-            @foreach (var articleTitle in Model)
+            @for (int i = 0; i < Model.Count; i += 5)
             {
+                var articleTitle = Model[i];
+                var articleImage = Model[i + 1];
+                var articleDescription = Model[i + 2];
+                var articleUrl = Model[i + 3];
+                var articleChannel = Model[i + 4];
+
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" style="margin-top: 100px; margin-bottom: 20px;">
                     <div class="card" style="border-radius: 15px; background-color: rgb(41, 47, 51); color: rgb(255, 255, 255);">
+                        <img class="card-img-top" src="@articleImage" alt="News image"
+                             style="border-top-left-radius: 15px; border-top-right-radius: 15px; object-fit: cover; width: 100%; height: 230px;">
                         <div class="card-body">
                             <div class="card-title h5">@articleTitle</div>
+                            <p class="card-text" style="color: rgb(182, 180, 180);">@articleDescription</p>
+                            <details style="margin-bottom: 15px;">
+                                <summary style="color: rgb(245, 245, 245); font-size: 15px;">Channel</summary>
+                                <p style="color: rgb(108, 117, 125); margin-bottom: 3px; margin-top: 4px; font-size: 12px;">
+                                    Channel: @articleChannel
+                                </p>
+                            </details>
+                            <a role="button" tabindex="0" href="@articleUrl" target="_blank"
+                               class="btn btn-primary"
+                               style="border-radius: 6px; font-weight: bold; background-color: rgb(0, 90, 187);
+                                              box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem;
+                                              color: white; border-color: rgba(50, 55, 98, 0.718);">
+                                Read more →
+                            </a>
                         </div>
                     </div>
                 </div>
