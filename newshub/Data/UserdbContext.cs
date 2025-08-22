@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
 using newshub.Controllers;
@@ -16,9 +16,11 @@ namespace newshub.Data
         }
 
        public DbSet<Register> Users { get; set; }
-       public DbSet<cardData1> cardData { get; set; }
+      
 
         public DbSet<Nadmin> Admin { get; set; }
+
+       
 
         
 
